@@ -43,7 +43,6 @@ void drawMainMenu();
 void drawTime();
 void drawEnd();
 void stopGame();
-void drawMessage();
 void resumeGame();
 void drawScore(int);
 int score =0;
@@ -103,8 +102,6 @@ void maindisp()
 		break;
 
 	case 0: drawMainMenu();
-		
-		//drawDistanceBar();
 
 		break;
 
@@ -112,8 +109,8 @@ void maindisp()
 		drawFootPath();
 		drawSurroundings();
 		drawDivider();
-		//if (gameCompleted)
-		drawMessage();
+		
+		drawMainMenu();
 		drawEnd();
 		drawcycle();
 		drawOther();
@@ -1493,7 +1490,7 @@ void periodicFunction(int v)
 {
 	if (gameStopped){
 		stopGame();
-		drawMessage();		
+				
 }
 
 	else
@@ -1588,41 +1585,6 @@ void draw_string(std::string str)
 	{
 		glutStrokeCharacter(GLUT_STROKE_ROMAN, *(str.begin() + i));
 	}
-}
-void drawMessage()
-{
-
-	//Draw start button
-	glClearColor(0.5, 0.5, 0.5, 0.0);
-	glColor3f(0.0, 0.0, 0.0);
-	drawFootPath();
-	drawSurroundings();
-	drawDivider();
-	drawcycle();
-
-	glColor3f(1.0, 1.0, 1.0);
-	glPushMatrix();
-	glTranslated(0, 30, 0);
-	glBegin(GL_LINE_LOOP);
-	glVertex2f(30, 15);
-	glVertex2f(30, -15);
-	glVertex2f(-30, -15);
-	glVertex2d(-30, 15);
-	glEnd();
-	glPopMatrix();
-
-	glPushMatrix();
-	glTranslated(-20, 30, 0);
-	glScalef(0.1, 0.1, 0.1);
-	glColor3f(1.0, 1.0, 1.0);
-	draw_string("Press enter to start again");
-
-	glPopMatrix();
-
-
-
-
-
 }
 
 void drawMainMenu()
@@ -1740,7 +1702,7 @@ void drawEnd()
 		}
 
 		glPopMatrix();
-		//drawMessage();
+		
 	}
 }
 
