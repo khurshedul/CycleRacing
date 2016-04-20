@@ -171,7 +171,7 @@ void normalKeyBoardFunc(unsigned char key, int x, int y)
 			game_state = 1;
 		}
 	}
-     else if (game_state == 2)
+    else if (game_state == 2)
 	{
 		if (key == 13)
 		{       gameStopped=false;
@@ -179,11 +179,14 @@ void normalKeyBoardFunc(unsigned char key, int x, int y)
                        // glTranslated(cycle_x, cycle_y, 0.0);
 			setcycles();
 			cycle_x=0, cycle_y=-100;
-			//glutStrokeCharacter(GLUT_STROKE_ROMAN, '0');
+			
 			score=0;
 			game_state = 1;
 			seconds=0;
 		}
+	}
+	if(key == 27) {
+		exit(1);
 	}
 }
 
@@ -271,7 +274,7 @@ int main(int argc, char *argv[])
 	glutKeyboardFunc(normalKeyBoardFunc);
 	glutMouseFunc(mouse_func);
 	glutPassiveMotionFunc(mouse_hover);
-
+	glutFullScreen(); 
 	glutMainLoop();
 	return 0;
 }
@@ -1636,19 +1639,15 @@ void drawMainMenu()
 	glColor3f(1.0, 1.0, 1.0);
 	glPushMatrix();
 	glTranslated(0, 30, 0);
-	glBegin(GL_LINE_LOOP);
-	glVertex2f(30, 15);
-	glVertex2f(30, -15);
-	glVertex2f(-30, -15);
-	glVertex2d(-30, 15);
+	
 	glEnd();
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslated(-20, 30, 0);
+	glTranslated(-110, 30, 0);
 	glScalef(0.1, 0.1, 0.1);
 	glColor3f(1.0, 1.0, 1.0);
-	draw_string("START");
+	draw_string("ENTER TO START , ESC TO EXIT");
 
 	glPopMatrix();
 
